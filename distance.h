@@ -1,13 +1,13 @@
 #include <avr/io.h>
-// Global variables for duration and distance
+
 float duration, distance;
-float distance_calc();
+
 // pins
 int trig = 3;
 int echo = 2;
 int out = 0;
 
-float distance_calc();
+float distance_calc(){
   PORTD &= ~(1 << trig);// Make sure Trig is low for 2 microseconds
   delayMicroseconds(2);
   PORTD |= (1 << trig);// Send a 10-microsecond HIGH pulse to the Trig pin (trig)
@@ -16,3 +16,4 @@ float distance_calc();
   duration = pulseIn(out, HIGH);
   distance = duration * 0.0343 / 2;  // Calculate distance in cm
   return distance;
+}

@@ -1,5 +1,5 @@
 #include <avr/io.h>
-#include <distance.h>
+#include "distance.h"
 
 void setup() {
   Serial.begin(9600);
@@ -12,9 +12,9 @@ void setup() {
 
 void loop() {
 
-  distance_calc();
+  distance_reading = distance_calc();
   Serial.print("Distance: ");
-  Serial.print(distance);
+  Serial.print(distance_reading);
   Serial.println(" cm");
 
 

@@ -36,7 +36,7 @@
 
 
 // Global variables for duration and distance
-float duration, distance, duration_two;
+float duration, distance;
 int trig = 3;
 int echo = 2;
 int out = 0;
@@ -64,8 +64,8 @@ void loop() {
   PORTD &= ~(1 << trig);  // Set Trig low after pulse
   
   // Measure the duration of the pulse on Echo pin (PB2)
-  //duration = pulseIn(echo, HIGH);
-  duration_two = pulseIn(out, HIGH);
+  duration = pulseIn(echo, HIGH);
+
   // Calculate distance in cm
   distance = duration * 0.0343 / 2;
   
