@@ -1,11 +1,22 @@
+#ifndef DISTANCE_H
+#define DISTANCE_H
 #include <avr/io.h>
 
-float duration, distance;
+// Pin definitions
+extern const int trig;
+extern const int echo;
+extern const int out;
 
+// Function declaration
+float distance_calc();
+
+#endif
 // pins
-int trig = 3;
-int echo = 2;
-int out = 0;
+const int trig = 3;
+const int echo = 2;
+const int out = 0;
+
+float duration, distance;
 
 float distance_calc(){
   PORTD &= ~(1 << trig);// Make sure Trig is low for 2 microseconds
