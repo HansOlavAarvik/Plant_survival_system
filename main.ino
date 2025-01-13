@@ -1,5 +1,6 @@
 #include <avr/io.h>
 #include "distance.h"
+#include "mtr.h"
 
 float distance_reading;
 
@@ -9,6 +10,7 @@ void setup() {
     DDRD |= (1 << TRIG);
     DDRD &= ~(1 << ECHO);
     DDRB &= ~(1 << OUT);
+    DDRA &= ~(1 << POT);
 }
 
 void loop() {
