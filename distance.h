@@ -1,30 +1,18 @@
-// distance.h
-#ifndef DISTANCE_H
+#ifndef DISTANCE_H    // Start of header guard
 #define DISTANCE_H
 
 #include <avr/io.h>
 
-// Pin definitions
+// Pin definitions - these are constants that get replaced by the preprocessor
 #define TRIG 3
 #define ECHO 2
 #define OUT 0
 
-// Variables
-static float duration, distance;
+// extern tells the compiler "these variables exist somewhere else"
+extern float duration;
+extern float distance;
 
-// Function implementation directly in header
-static float distance_calc() {
-    PORTD &= ~(1 << TRIG);  // Make sure Trig is low for 2 microseconds
-    delayMicroseconds(2);
-    
-    PORTD |= (1 << TRIG);   // Send a 10-microsecond HIGH pulse to the Trig pin
-    delayMicroseconds(10);
-    PORTD &= ~(1 << TRIG);  // Set Trig low after pulse
-    
-    duration = pulseIn(ECHO, HIGH);
-    distance = duration * 0.0343 / 2;  // Calculate distance in cm
-    
-    return distance;
-}
+// Function declaration - just tells compiler the function exists and its signature
+float distance_calc();
 
-#endif
+#endif              // End of header guard
