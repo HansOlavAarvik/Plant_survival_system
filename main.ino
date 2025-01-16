@@ -10,15 +10,20 @@ void setup() {
     DDRD |= (1 << TRIG);
     DDRD &= ~(1 << ECHO);
     DDRB &= ~(1 << OUT);
+    DDRB |= (1<< SERV);
     DDRA &= ~(1 << POT);
 }
 
 void loop() {
-    distance_reading = distance_calc();
+    servo_control(open)
     
-    Serial.print("Distance: ");
-    Serial.print(distance_reading);
-    Serial.println(" cm");
     
-    delay(500);
+    
 }
+
+// Distancel calcu
+//distance_reading = distance_calc();
+// Serial.print("Distance: ");
+// Serial.print(distance_reading);
+// Serial.println(" cm");
+//delay(500);

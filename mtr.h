@@ -3,10 +3,12 @@
 #include <avr/io.h>
 
 #define  POT 0
+#define SERV 1
 
 extern float pot_val;
-extern bool valve_open;
 
+ 
+void servo_control();
 void pot_read();
 
 #endif

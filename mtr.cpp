@@ -1,5 +1,18 @@
 #include "mtr.h"  
 #include <Arduino.h>
+#include <Servo.h>
+#include<avr/io.h>
+
+Servo Servo1;
+
+servo_control(configuration){
+    for (i = 0; i < 10; i++) {
+        PORTB |=(1<<SERV);
+        delayMicroseconds(configuragtion);
+        PORTB &= ~(1<<SERV);
+        delayMicroseconds(configuration);
+    }    
+}
 
 
 
