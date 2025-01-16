@@ -1,22 +1,29 @@
 #include "mtr.h"  
 #include <Arduino.h>
-#include <Servo.h>
 #include<avr/io.h>
-
-Servo Servo1;
-
-servo_control(configuration){
-    for (i = 0; i < 10; i++) {
-        PORTB |=(1<<SERV);
-        delayMicroseconds(configuragtion);
-        PORTB &= ~(1<<SERV);
-        delayMicroseconds(configuration);
-    }    
-}
+#include <string.h>
 
 
+void motor_control(const char *configuration) {
+    if (strcmp(configuration, "stop") == 0) {
+        PORTB &= ~(1 << MOT1);
+        PORTB &= ~(1 << MOT2);
+        Serial.println("stop");
+    }
+    else if (strcmp(configuration, "open") == 0) {
+        PORTB |= (1 << MOT1);
+        PORTB &= ~(1 << MOT2);
+        Serial.println("open");
+    }
+    else if (strcmp(configuration, "close") == 0) {
+        PORTB &= ~(1 << MOT1);
+        PORTB |= (1 << MOT2);
+        Serial.println("close");
+    }
+    else return;
+} 
 
 void pot_read(){
-    pot_val = anaoglRead(POT);
-    serial.monitor(pot_val);
+    pot_val = analogRead(POT);
+    Serial.println(pot_val);
 }
