@@ -7,7 +7,7 @@
 #define MOT2 5
 
 extern float pot_val;
-
+// kommentar
 void motor_control(const char *configuration);
 void pot_read();
 
